@@ -1,0 +1,41 @@
+version: 1
+
+formatters:
+  simple:
+    format: '%(asctime)s --[%(name)s-%(levelname)s]: %(message)s'
+    datefmt: '%m/%d/%Y %H:%M:%S %p'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: simple
+    stream: ext://sys.stderr
+  err_file:
+    class: logging.FileHandler
+    level: ERROR
+    formatter: simple
+    filename: err.log
+    encoding: utf-8
+
+loggers:
+  Validation:
+    level: DEBUG
+    handlers: [console, err_file]
+    propagate: no
+  UPDATE:
+    level: DEBUG
+    handlers: [console, err_file]
+    propagate: no
+  Crawl_Pause:
+    level: DEBUG
+    handlers: [console, err_file]
+    propagate: no
+  GET_IP:
+    level: DEBUG
+    handlers: [console, err_file]
+    propagate: no
+
+#root:
+#  level: ERROR
+#  handlers: [err_file]
