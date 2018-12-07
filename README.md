@@ -51,4 +51,4 @@
         --requirements.txt      # python requirments
         --README.md    
  ## 博客地址：
- [用Python搭建高匿代理IP池](https://blog.csdn.net/zhengyajun_email/article/details/83786980)
+ [用Python搭建高匿代理IP池](https://blog.csdn.net/zhengyajun_email/article/details/83898069)
