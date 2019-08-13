@@ -2,9 +2,9 @@
 """
 Purpose: 提供有效的ip获取RESTful API接口
 API-Example(127.0.0.1:5000):
-    获取单个有效ip(有验证): 127.0.0.1:5000/ip_pool/api/v1.0/get_ip
-    查看文件中所有ip(无验证): 127.0.0.1:5000/ip_pool/api/v1.0/get_ip_pool
-    查看文件中指定ip(无验证): 127.0.0.1:5000/ip_pool/api/v1.0/get_a_ip/0
+    获取单个有效ip(有验证): 127.0.0.1:5000/ip_pool/api/v1.0/vaild_ip
+    查看文件中所有ip(无验证): 127.0.0.1:5000/ip_pool/api/v1.0/all_ip
+    查看文件中指定ip(无验证): 127.0.0.1:5000/ip_pool/api/v1.0/ip/0
 Author: YajunZheng
 Created: 2018/10/29
 """
@@ -31,7 +31,7 @@ def load_json_file(data_path):
     return res
 
 
-@app.route('/ip_pool/api/v1.0/get_ip', methods=['GET'])
+@app.route('/ip_pool/api/v1.0/vaild_ip', methods=['GET'])
 def get_ip():
     """获取单个ip，验证有效后返回该ip"""
     ip = get_valid_ip()
@@ -41,14 +41,14 @@ def get_ip():
         abort(404)
 
 
-@app.route('/ip_pool/api/v1.0/get_ip_pool', methods=['GET'])
+@app.route('/ip_pool/api/v1.0/all_ip', methods=['GET'])
 def get_all_ip():
     """获取整个ip池，不进行验证，返回json文件内容"""
     ip_pool = load_json_file(data_path=data_path)
     return jsonify({'get_ip_pool': ip_pool})
 
 
-@app.route('/ip_pool/api/v1.0/get_ip/<int:ip_id>', methods=['GET'])
+@app.route('/ip_pool/api/v1.0/ip/<int:ip_id>', methods=['GET'])
 def get_a_ip(ip_id):
     """从json文件中获取指定ip,不进行验证，直接返回结果"""
     ip_pool = load_json_file(data_path=data_path)
